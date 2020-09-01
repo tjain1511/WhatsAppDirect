@@ -7,20 +7,6 @@
     android:background="@drawable/background"
     tools:context=".MainActivity">
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-3560512023866532/3092220203"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/message"></com.google.android.gms.ads.AdView>
-
     <com.hbb20.CountryCodePicker
         android:id="@+id/ccp"
         android:layout_width="wrap_content"

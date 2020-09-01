@@ -9,9 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3560512023866532~7059385374"/>
         <activity android:name=".SplashScreen"
             android:theme="@style/splashtheme">
             <intent-filter>

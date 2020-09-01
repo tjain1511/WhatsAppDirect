@@ -11,19 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.hbb20.CountryCodePicker;
 import java.util.regex.Pattern;
-import com.google.android.gms.ads.AdView;
-import static com.google.android.gms.ads.MobileAds.*;
 public class MainActivity extends AppCompatActivity implements  View.OnKeyListener {
-    private InterstitialAd mInterstitialAd;
-    private AdView mAdView;
     EditText phoneNum;
     EditText message;
     CountryCodePicker ccp;
@@ -38,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements  View.OnKeyListen
         phoneNum = findViewById(R.id.phoneNum);
         String entNum = String.valueOf(phoneNum.getText());
         if (isValidMobile(entNum)) {
-            mInterstitialAd.show();
             String finalNum = ccp.getFullNumber() + entNum;
             message = findViewById(R.id.message);
             String msg = String.valueOf(message.getText());
@@ -61,25 +50,6 @@ public class MainActivity extends AppCompatActivity implements  View.OnKeyListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
-        MobileAds.initialize(this,
-                "ca-app-pub-3560512023866532~7059385374");
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3560512023866532/9561317831");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-        mInterstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
-            }
-        });
         message =findViewById(R.id.message);
         message.setOnKeyListener(this);
     }
@@ -96,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnKeyListen
                         android.content.Intent.ACTION_SEND);
                 i.setType("text/plain");
                 i.putExtra(
-                        android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.indianapp.whatsappchat");
+                        android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.indianapp.whatsappdirect");
                 startActivity(Intent.createChooser(
                         i,
                         "Share Via"));
